@@ -1,0 +1,13 @@
+.items-list {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+}
+
+.item {
+    border: 1px solid #ccc;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: aqua;
+    border-radius: 8px;
+}
