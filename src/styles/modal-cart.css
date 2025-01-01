@@ -1,0 +1,131 @@
+.cartContainer {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  font-family: Roboto;
+
+  .buttonCartContainer {
+    position: absolute;
+    /* margin-top: 10px; */
+    margin-right: 20px;
+    cursor: pointer;
+    z-index: 2;
+
+    svg {
+      height: 25px;
+      /* margin-right: 2px; */
+    }
+
+    .buttonCart {
+      background-color: #222222;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+    }
+    .productsNumber {
+      height: 20px;
+      width: 20px;
+      border-radius: 999px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #fb3939;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .cart {
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 20px;
+    border-radius: 30px;
+    width: 400px;
+    height: 500px;
+    background-color: #222222;
+    color: white;
+
+    h2 {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 35px;
+      padding: 0;
+    }
+
+    .cartVacio {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .totalContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      margin-right: 20px;
+      font-family: Roboto;
+      font-size: 14px;
+      color: white;
+    }
+
+    .total {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      padding-bottom: 35px;
+    }
+
+    .productsContainer{
+      display: grid;
+      height: 500px;
+      grid-template-rows: 1fr;
+      max-height: 200px;
+      overflow-y: scroll;
+      margin-top: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 5px;
+      margin-bottom: 20px;
+
+      button {
+        border: none;
+        border-radius: 3px;
+        padding: 5px 10px;
+        cursor: pointer;
+       
+      }
+  
+      button:hover {
+        background-color: #cecece;
+      }
+    }
+
+  }
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+}

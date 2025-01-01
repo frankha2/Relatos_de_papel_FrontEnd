@@ -1,9 +1,11 @@
+import '../styles/topbar.css'
+
 function Footer() {
     
     return (
         <>
-            <div className="grid bg-primary">
-                <h2>Lorem ipsum minus eaque, sint, repudiandae facere.</h2>
+            <div className="grid header-style">
+                <h2>Derechos reservados</h2>
             </div>
         </>
     )

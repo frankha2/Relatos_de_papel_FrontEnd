@@ -12,17 +12,26 @@ function Login() {
 
   return (
     <>
-    <div className='card flex flex-column align-items-center justify-content-center gap-3 h-screen'>
-      
-      <InputText value={user} onChange={(e) => setUser(e.target.value)} />
-      
-      <InputText value={passWord} onChange={(e) => setpassWord(e.target.value)} />
-
-      <Link to={'/home'}>
-        <Button label='Login'/>
-      </Link>
-     
+     <div className="login-page">
+      <div className="login-container">
+        <h2>Login</h2>
+        <InputText
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+          placeholder="Username"
+        />
+        <InputText
+          type="password"
+          value={passWord}
+          onChange={(e) => setpassWord(e.target.value)}
+          placeholder="Password"
+        />
+        <Link to={'/home'}>
+          <Button label="Login" />
+        </Link>
+      </div>
     </div>
+
     </>
 
 )
