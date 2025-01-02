@@ -2,14 +2,9 @@ import { Card } from "primereact/card";
 import '../styles/checkout.css';
 import { Button } from "primereact/button";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ContextBook } from "./ContextBook";
-import { ModalCart } from "./ModalCart";
-import { ItemCart } from "./ItemCart";
 
-interface Data {
-    cart: Book[];
-}
 interface Book {
     id: number;
     title: string;
@@ -23,30 +18,42 @@ interface Book {
 const Checkout = () => {
 
     const { globalList } = useContext(ContextBook);
+    const [ inactive, setInactive ] = React.useState(false);
+    const [ formData, setFormData ] = React.useState('');
     const navigate = useNavigate();
  
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+       
+        setFormData(e.target.value);
+        setInactive(false);
+    }
     
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         alert('Compra realizada con éxito');
         window.location.href = '/home';
     };
 
     useEffect(() => {
+        const timer = setTimeout(() => {
+            
+            setInactive(true);
+
+        }, 10000); 
+        return () => clearTimeout(timer);
         
-        console.log(globalList)
-    },  []);
+    },  [formData]);
 
     useEffect(() => {
         
-        const timer = setTimeout(() => {
-          navigate('/home'); 
-        }, 10000); 
-    
-        return () => clearTimeout(timer);
-    }, [navigate]);
+        if (inactive === true) {
+            
+            navigate('/home'); 
+        }
 
-    const total = globalList?.reduce((previous, current) => {
+    }, [inactive]);
+
+    const total = globalList?.reduce((previous: any, current: any) => {
         return previous + current?.price * current?.cant;
     }, 0 );
 
@@ -62,22 +69,25 @@ const Checkout = () => {
                 
                 <div className="content-summary w-6">
 
-                    {globalList.map((item, i) => (
+                    {globalList.map((item: Book) => (
+                    
+                    item?.cant > 0 && (
 
-                    <div className="cartCheckout">
-                            
-                        <img src={item.img} alt={item.name} />
-                        <div className="dataCheckout">
-                        <div className="left">
-                            <p>{item.title}</p>
-                            
-                        </div>
-                            <div className="right">
-                                <div>{item.cant}</div>
-                                <p>Total: ${item.cant * item.price}</p>
+                        <div className="cartCheckout">
+                                
+                            <img src={item.img} alt={item.title} />
+                            <div className="dataCheckout">
+                            <div className="left">
+                                <p>{item.title}</p>
+                                
+                            </div>
+                                <div className="right">
+                                    <div>{item.cant}</div>
+                                    <p>Total: ${item.cant * item.price}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )
 
                     ))}
                 </div>
@@ -91,7 +101,7 @@ const Checkout = () => {
                             type="text"
                             name="name"
                             // value={formData.name}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             required
                         />
                         </div>
@@ -101,7 +111,7 @@ const Checkout = () => {
                             type="text"
                             name="address"
                             // value={formData.address}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             required
                         />
                         </div>
@@ -110,7 +120,7 @@ const Checkout = () => {
                         <select
                             name="paymentMethod"
                             // value={formData.paymentMethod}
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             required
                         >
                             <option value="creditCard">Tarjeta de crédito</option>

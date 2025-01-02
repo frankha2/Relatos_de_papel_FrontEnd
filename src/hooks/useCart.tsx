@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 interface Book {
   id: number;
   title: string;
@@ -12,6 +12,7 @@ interface Book {
 const useCart = () => {
   
   const [books, setBooks] = useState<Book[]>();
+  const [bookById, setBookById] = useState<Book>();
 
   const listBooks: Book[] = [
     { id: 1, title: 'Memorias de una geisha', genre: 'Novela', author: 'Arthur Golden', price: 20, cant: 0, img: '../../public/img/memoria_de_una_geisah.jpeg' },
@@ -31,13 +32,19 @@ const useCart = () => {
    
   }
 
-  // useEffect(() => {
-  //   addBooks();
+  const findById = (id: number) => {
+    const bookDetailFound = listBooks?.find((book: Book) => book?.id === id);
 
-  // }, []);
+    if (bookDetailFound) {
+      setBookById(bookDetailFound);
+    }
+
+  }
 
   return {
     addBooks,
+    findById,
+    bookById,
     books
   };
 }

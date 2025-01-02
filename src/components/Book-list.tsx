@@ -2,14 +2,11 @@ import { Card } from "primereact/card"
 
 import '../styles/book-list.css'
 import { Button } from "primereact/button";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ContextBook } from "./ContextBook";
 import { Books } from "./Books";
 import useCart from "../hooks/useCart";
 
-interface Data {
-    booksData: Book[];
-}
 interface Book {
     id: number;
     title: string;
@@ -20,15 +17,14 @@ interface Book {
     img: string;
 }
 
-const BookList: React.FC<Data> = (booksData)=> {
+const BookList = ()=> {
 
-    const listBooks: Book[] = booksData.booksData;
+    const { books, addBooks } = useCart();
     const { updateList } = useContext(ContextBook);
-    const [books, setBooks] = useState<Book[]>();
 
     const handleSelection = (book: Book) => {
 
-        updateList((prevBook) => {
+        updateList((prevBook: any) => {
             const findBook = prevBook.find((b: Book) => b.id === book.id);
 
             if (findBook) {
@@ -45,32 +41,33 @@ const BookList: React.FC<Data> = (booksData)=> {
     }
 
     useEffect(() => {
+        addBooks();
         
-        setBooks(booksData.booksData);
-      
-    },  [booksData]);
+    },  []);
 
     return  (
-
-        <Card className="items-list">  
-
-            { booksData?.booksData?.map((book: Book) => (
-                <div className="item">
-
-                    <Books 
-                        book={book}
-                    />
-
-                    <Button label='Agregar al carrito' onClick={() => handleSelection(book)}/>
-                </div>
-                
-            ))}
-
-        </Card>
        
-        
+        books?.length === 0 ? <h1>No hay libros disponibles</h1> :  (
+
+            <Card className="items-list">  
+
+                { books?.map((book: Book) => (
+                    <div className="item">
+
+                        <Books 
+                            book={book}
+                        />
+
+                        <Button label='Agregar al carrito' onClick={() => handleSelection(book)}/>
+                    </div>
+                    
+                ))}
+
+            </Card>
+        )
+    
     )
 
 }
 
-export default BookList
+export default BookList;

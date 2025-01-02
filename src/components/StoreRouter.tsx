@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import HomePage from "./Home";
-import { BookDetails } from "./Book-details";
 import { useState } from 'react'
 import { ContextBook } from "./ContextBook";
 import Checkout from "./Checkout";

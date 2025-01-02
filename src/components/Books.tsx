@@ -17,22 +17,22 @@ interface Book {
 export const Books: React.FC<Data> = (bookData) => {
 
     const { book } = bookData; 
-
+    
     return (
 
         <div className="productsContainer">
           
-                <div className="product">
-                        <img src={book.img} alt={book.title}/>
-                    <div>
-                    <p>
-                        {book.title} - ${book.price}
-                    </p>
-                    </div>
-                    <Link to={`/book/${book.id}`}>
-                      <Button label='Detalles'/>
-                    </Link>
+            <div className="product">
+                    <img src={book?.img} alt={book?.title}/>
+                <div>
+                <p>
+                    {book?.title} - ${book?.price}
+                </p>
                 </div>
+                <Link to={`/book/${book?.id}`}>
+                    <Button label='Detalles'/>
+                </Link>
+            </div>
         </div>
     )
 }

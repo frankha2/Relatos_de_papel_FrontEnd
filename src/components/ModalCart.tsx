@@ -5,20 +5,14 @@ import { ItemCart } from './ItemCart';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
 
-interface Car {
-    openModal?: boolean;
-    closeModal?: () => void;
-    // remove: (id: number) => void;
-    bookDetails?: Book[];
-}
-
 interface Book {
-    id: number;
-    title: string;
-    genre: string;
-    author: string;
-    cant: number;
-    price: number;
+  id: number;
+  title: string;
+  genre: string;
+  author: string;
+  price: number;
+  cant: number;
+  img: string;
 }
 
 export const ModalCart = () => {
@@ -31,7 +25,7 @@ export const ModalCart = () => {
     let countBooks: number = 0;
   
     useEffect(() => {
-      globalList?.map(book => {
+      globalList?.map((book: Book) => {
           
         countBooks = countBooks + book.cant;
       });
@@ -42,7 +36,7 @@ export const ModalCart = () => {
 
     }, [globalList]);
   
-    const total = globalList?.reduce((previous, current) => {
+    const total = globalList?.reduce((previous: any, current: any) => {
       return previous + current?.price * current?.cant;
     }, 0 );
     
@@ -102,7 +96,7 @@ export const ModalCart = () => {
               <p className="cartVacio">Tu carrito esta vacio</p>
             ) : (
               <div className="productsContainer">
-                {globalList.map((item, i) => (
+                {globalList.map((item: Book, i: number) => (
 
                   <ItemCart key={i} item={item} />
 
@@ -123,14 +117,6 @@ export const ModalCart = () => {
               </div>
             )}
             
-
-            
-            {/* <h2 className="total">Total: ${total}</h2>
-            <div className='buttons'>
-              <Link to="/check">
-                <Button>Realiar pago</Button>
-              </Link>
-            </div> */}
           </div>
         )}
       </div>

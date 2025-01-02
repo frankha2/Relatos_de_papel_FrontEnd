@@ -3,10 +3,9 @@ import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import '../styles/book-details.css';
 import { ContextBook } from "./ContextBook";
-import { Link, useNavigate } from "react-router-dom";
-interface Data {
-    book: Book;
-}
+import { Link, useNavigate, useParams } from "react-router-dom";
+import useCart from "../hooks/useCart";
+
 interface Book {
     id: number;
     title: string;
@@ -17,10 +16,15 @@ interface Book {
     img: string;
 }
 
-export const BookDetails: React.FC<Data> = (book) => {
+export const BookDetails = () => {
+
+    const { id }  = useParams();
     const navigate = useNavigate();
-    const [details, setDetails] = useState<Book>();
+    const { bookById, findById } = useCart();
+    const [ inactive, setInactive ] = useState(false);
     const { globalList, updateList } = useContext(ContextBook);
+    const idBook: number = Number(id);
+    let isButtonShow: boolean = false;
 
     const header = (
         <div className="btn">
@@ -30,9 +34,15 @@ export const BookDetails: React.FC<Data> = (book) => {
         </div>
     );
 
-    const handleAdd = (book: Book) => {
+    const findBook = (id: number) => {
+        findById(id);
+        
+    }
 
-        updateList((prevBook) => {
+    const handleAdd = (book: Book) => {
+        
+
+        updateList((prevBook: any) => {
             const findBook = prevBook.find((b: Book) => b.id === book.id);
 
             if (findBook) {
@@ -46,18 +56,16 @@ export const BookDetails: React.FC<Data> = (book) => {
             }
 
         });
-            
-
     }
 
     const handleRemove = (id: number) => {
 
-        updateList((prevBook) => {
-            const findBook = globalList?.find(b => b?.id === id);
-            console.log(findBook, prevBook);
+        updateList((prevBook: any) => {
+            const findBook = globalList?.find((b: Book) => b?.id === id);
+            
             if (findBook) {
 
-              return prevBook?.map(b =>
+              return prevBook?.map((b: Book) =>
                 b?.id === id && b?.cant > 0 ? {...b, cant: b?.cant - 1} : b
               );
             }
@@ -66,39 +74,52 @@ export const BookDetails: React.FC<Data> = (book) => {
     }
 
     useEffect(() => {
-        setDetails(book.book);
-    }, [book]);
+        findBook(idBook);
+    }, [id]);
+
+    useEffect(() => {
+
+        const a = globalList.find((b: Book) => b.id === idBook);  
+        
+        if (a) {
+            isButtonShow = a?.cant === 0 ? false : true;
+        }
+
+        const timer = setTimeout(() => {
+            setInactive(true); 
+        }, 10000); 
+
+        return () => clearTimeout(timer);
+
+    }, [globalList]);
 
     useEffect(() => {
         
-        const timer = setTimeout(() => {
-          navigate('/home'); 
-        }, 10000); 
-    
-        return () => clearTimeout(timer);
-    }, [navigate]);
+        if (inactive === true) {
+            navigate('/home');
+        }
+
+    }, [inactive]);
 
     return (
-        // <h2>Hola</h2>
-        // book ? null : (
-            <Card className="h-screen items-container" header={header}>
+        !bookById ? null : (
+            <Card className="h-screen items-container" header={ header }>
                 <h3>Detalles del libro</h3>
-                <img src={book?.book?.img} alt={book?.book?.title}/>
-                <h3>Libro: {book?.book?.title}</h3>
-                <p>Autor: {book?.book?.author}</p>
-                <p>Genero: {book?.book?.genre}</p>
+                <img src={ bookById?.img } alt={ bookById?.title }/>
+                <h3>Libro: { bookById?.title }</h3>
+                <p>Autor: { bookById?.author }</p>
+                <p>Genero: { bookById?.genre }</p>
                 
                 <div className="buttons">
-                    <Button onClick={() => handleAdd(book?.book)}>
+                    <Button onClick={() => handleAdd(bookById)}>
                         AGREGAR
                     </Button>
 
-                    <Button disabled={globalList.length === 0} onClick={() => handleRemove(book?.book?.id)}>
+                    <Button disabled={isButtonShow} onClick={() => handleRemove(bookById?.id)}>
                         SACAR
                     </Button>
                 </div>
             </Card>
-        // ) 
-       
+        ) 
     )
 }
