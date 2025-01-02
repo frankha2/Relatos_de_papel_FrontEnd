@@ -19,7 +19,6 @@ export const ModalCart = () => {
 
     const [cartOpen, setCartOpen] = useState(false);
     const [productsLength, setProductsLength] = useState(0);
-    // const [total, setTotal] = useState(0);
   
     const { globalList } = useContext(ContextBook);
     let countBooks: number = 0;
