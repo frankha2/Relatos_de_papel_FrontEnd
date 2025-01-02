@@ -16,7 +16,6 @@ interface Book {
 export const ItemCart = ({item}: { item: Book }) => {
     
   const { globalList, updateList } = useContext(ContextBook);
-  const { id } = item;
 
   const handleAdd = (id: number) => {
     
