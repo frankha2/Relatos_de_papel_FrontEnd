@@ -20,7 +20,7 @@ interface Book {
 function HomePage() {
 
     const { pathname } = useLocation();
-    console.log(pathname)
+    
     const { globalList } = useContext(ContextBook);
     const [ bookFound, setBookFound ] = useState<Book>();
     const { books, addBooks } = useCart(); 
@@ -44,7 +44,6 @@ function HomePage() {
 
        
         setList();
-        console.log(globalList)
     },[id]);
 
     return (

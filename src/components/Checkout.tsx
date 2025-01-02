@@ -1,7 +1,7 @@
 import { Card } from "primereact/card";
 import '../styles/checkout.css';
 import { Button } from "primereact/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { ContextBook } from "./ContextBook";
 import { ModalCart } from "./ModalCart";
@@ -23,10 +23,8 @@ interface Book {
 const Checkout = () => {
 
     const { globalList } = useContext(ContextBook);
-
-    // const header = (
-        
-    // );
+    const navigate = useNavigate();
+ 
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,6 +36,15 @@ const Checkout = () => {
         
         console.log(globalList)
     },  []);
+
+    useEffect(() => {
+        
+        const timer = setTimeout(() => {
+          navigate('/home'); 
+        }, 10000); 
+    
+        return () => clearTimeout(timer);
+    }, [navigate]);
 
     const total = globalList?.reduce((previous, current) => {
         return previous + current?.price * current?.cant;
