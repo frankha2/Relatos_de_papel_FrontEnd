@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import '../styles/modal-cart.css';
 import { ContextBook } from './ContextBook';
 import { ItemCart } from './ItemCart';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
 
 interface Book {
@@ -21,6 +21,7 @@ export const ModalCart = () => {
     const [productsLength, setProductsLength] = useState(0);
   
     const { globalList } = useContext(ContextBook);
+    const navigate = useNavigate();
     let countBooks: number = 0;
   
     useEffect(() => {
@@ -109,9 +110,9 @@ export const ModalCart = () => {
               <div className="totalContainer">
               <h2 className="total">Total: ${total}</h2>
               <div className="buttons">
-                <Link to="/check">
-                  <Button>Realizar pago</Button>
-                </Link>
+              
+                <Button onClick={() => { navigate('/check') }}>Realizar pago</Button>
+                
               </div>
               </div>
             )}

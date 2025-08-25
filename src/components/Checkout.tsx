@@ -1,7 +1,7 @@
 import { Card } from "primereact/card";
 import '../styles/checkout.css';
 import { Button } from "primereact/button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 import { ContextBook } from "./ContextBook";
 
@@ -17,7 +17,7 @@ interface Book {
 
 const Checkout = () => {
 
-    const { globalList } = useContext(ContextBook);
+    const { globalList, updateList } = useContext(ContextBook);
     const [ inactive, setInactive ] = React.useState(false);
     const [ formData, setFormData ] = React.useState('');
     const navigate = useNavigate();
@@ -31,7 +31,9 @@ const Checkout = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         alert('Compra realizada con éxito');
-        window.location.href = '/home';
+        updateList([]);
+        navigate('/home');
+
     };
 
     useEffect(() => {
@@ -60,9 +62,9 @@ const Checkout = () => {
     return (
          <Card className="items-checkout">
             <div className="btn">
-                <Link to="/home">
-                    <Button >Regresar</Button>
-                </Link>
+               
+                <Button onClick={() => { navigate('/home') }}>Regresar</Button>
+               
             </div>
             <h2>Formulario de Pago</h2>
             <div className="flex flex-row justify-content-between w-screen p-4">

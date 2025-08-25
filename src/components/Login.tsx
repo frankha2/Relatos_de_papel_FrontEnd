@@ -4,11 +4,13 @@ import '../styles/login.css'
 
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [user, setUser] = useState('user');
   const [passWord, setpassWord] = useState('123');
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -26,9 +28,7 @@ function Login() {
           onChange={(e) => setpassWord(e.target.value)}
           placeholder="Password"
         />
-        <Link to={'/home'}>
-          <Button label="Login" />
-        </Link>
+        <Button label="Login" onClick={() => {{ navigate('/home') }}}/>
       </div>
     </div>
 

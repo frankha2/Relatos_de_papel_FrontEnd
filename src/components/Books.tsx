@@ -1,5 +1,5 @@
 import '../styles/books.css'
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 interface Data {
     book: Book;
@@ -17,6 +17,8 @@ interface Book {
 export const Books: React.FC<Data> = (bookData) => {
 
     const { book } = bookData; 
+
+    const navigate = useNavigate();
     
     return (
 
@@ -29,9 +31,9 @@ export const Books: React.FC<Data> = (bookData) => {
                     {book?.title} - ${book?.price}
                 </p>
                 </div>
-                <Link to={`/book/${book?.id}`}>
-                    <Button label='Detalles'/>
-                </Link>
+               
+                <Button label='Detalles' onClick={() => { navigate(`/book/${book?.id}` ) }}/>
+            
             </div>
         </div>
     )
