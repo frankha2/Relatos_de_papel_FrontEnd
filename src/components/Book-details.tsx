@@ -3,7 +3,7 @@ import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import '../styles/book-details.css';
 import { ContextBook } from "./ContextBook";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 interface Book {
@@ -28,9 +28,9 @@ export const BookDetails = () => {
 
     const header = (
         <div className="btn">
-            <Link to="/home">
-                <Button >Regresar</Button>
-            </Link>
+            
+            <Button onClick={() => { navigate('/home') }}>Regresar</Button>
+            
         </div>
     );
 
