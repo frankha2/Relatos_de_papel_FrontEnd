@@ -11,10 +11,10 @@ Es una aplicación para la venta de libros online.
 ## Requisitos 📋
 
 Proyecto hecho con 
-[React](https://react.dev/learn/installation) version 18.3.1. 
-[TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-[Vite](https://es.vite.dev/guide/)
-[NodeJS](https://github.com/angular/angular-cli)
+[React](https://react.dev/learn/installation) version 18.3.1. <br>
+[TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) <br>
+[Vite](https://es.vite.dev/guide/) <br>
+[NodeJS](https://github.com/angular/angular-cli) <br>
 
 ## Instalación 🔧
 
