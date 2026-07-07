@@ -1,19 +1,20 @@
-### Relatos de Papel
+# Relatos de Papel
 
 Es una aplicación para la venta de libros online.
-Te permite visualizar, realizar busqueda por filtros de los tipos de libros.
-Seleccionar los libros y la cantidad que quieres comprar.
-Visualizar el carrito de compras con la lista de los libros y las cantidades.
-Tambien permite realizar el checkout de la compra.
-Ademas de realizar todo el CRUD de los libros que existen en stock.
+
+- Te permite visualizar, realizar busqueda por filtros de los tipos de libros.
+- Seleccionar los libros y la cantidad que quieres comprar.
+- Visualizar el carrito de compras con la lista de los libros y las cantidades.
+- Tambien permite realizar el checkout de la compra.
+- Ademas de realizar todo el CRUD de los libros que existen en stock.
 
 ## Requisitos 📋
 
 Proyecto hecho con 
-[React](https://react.dev/learn/installation) version.
-[TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) version.
-[Vite](https://github.com/angular/angular-cli) version.
-[NodeJS](https://github.com/angular/angular-cli) version v22.15.0.
+[React](https://react.dev/learn/installation) version 18.3.1. 
+[TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+[Vite](https://es.vite.dev/guide/)
+[NodeJS](https://github.com/angular/angular-cli)
 
 ## Instalación 🔧
 
@@ -43,7 +44,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [HTML5](https://developer.mozilla.org/es/docs/Glossary/HTML5) - Lenguaje de marcado de hipertexto
 * [CSS3](https://developer.mozilla.org/es/docs/Web/CSS) - Hojas de Estilo en Cascada
 
-* ## Building 📦
+## Building 📦
 
 Para compilar el proyecto, ejecute:
 
@@ -54,13 +55,7 @@ npm run build
 Esto compilará tu proyecto y almacenará los artefactos de compilación en el directorio dist/. Por defecto, la compilación de producción optimiza tu aplicación para mejorar el rendimiento y la velocidad.
 
 
-
-
-
-
-
-
-# React + TypeScript + Vite
+## React + TypeScript + Vite
 
 Esta plantilla proporciona una configuración mínima para que React funcione en Vite con HMR y algunas reglas de ESLint.
 
@@ -73,7 +68,7 @@ Actualmente, hay dos complementos oficiales disponibles:
 
 Si está desarrollando una aplicación de producción, le recomendamos actualizar la configuración para habilitar las reglas de análisis estático de tipos:
 
-- Configure the top-level `parserOptions` property like this:
+- Configurar el nivel superior `parserOptions` propiedad como esta:
 
 ```js
 export default tseslint.config({
@@ -87,9 +82,9 @@ export default tseslint.config({
 })
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Reemplazar `tseslint.configs.recommended` a `tseslint.configs.recommendedTypeChecked` ó `tseslint.configs.strictTypeChecked`
+- Opcionalmente, agregue `...tseslint.configs.stylisticTypeChecked`
+- Instalar [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) y actualizar la configuración:
 
 ```js
 // eslint.config.js
@@ -110,29 +105,3 @@ export default tseslint.config({
   },
 })
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
