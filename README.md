@@ -1,3 +1,65 @@
+### Relatos de Papel
+
+Es una aplicación para la venta de libros online.
+Te permite visualizar, realizar busqueda por filtros de los tipos de libros.
+Seleccionar los libros y la cantidad que quieres comprar.
+Visualizar el carrito de compras con la lista de los libros y las cantidades.
+Tambien permite realizar el checkout de la compra.
+Ademas de realizar todo el CRUD de los libros que existen en stock.
+
+## Requisitos 📋
+
+Proyecto hecho con 
+[React](https://github.com/angular/angular-cli) version.
+[TypeScript](https://github.com/angular/angular-cli) version.
+[Vite](https://github.com/angular/angular-cli) version.
+[NodeJS](https://github.com/angular/angular-cli) version v22.15.0.
+
+## Instalación 🔧
+
+Primero descarga el repositorio
+
+```bash
+git clone "url"
+```
+Instala el NPM en la carpeta del proyecto
+
+```bash
+npm install
+```
+Ahora inicializa un servidor de desarrollo local, ejecutando
+
+```bash
+npm run dev o npm start
+```
+Al ejecutar el servidor, sino se abre automanticamente el navegador, abrelo y accede a http://localhost:4200/ 
+
+## Herramientas utilizadas 🛠️
+
+_Menciona las herramientas que utilizaste para crear tu proyecto_
+
+* [Angular](https://angular.dev/tools/cli/setup-local) - El framework web usado
+* [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Lenguaje
+* [HTML5](https://developer.mozilla.org/es/docs/Glossary/HTML5) - Lenguaje de marcado de hipertexto
+* [CSS3](https://developer.mozilla.org/es/docs/Web/CSS) - Hojas de Estilo en Cascada
+
+* ## Building 📦
+
+Para compilar el proyecto, ejecute:
+
+```bash
+npm run build
+```
+
+Esto compilará tu proyecto y almacenará los artefactos de compilación en el directorio dist/. Por defecto, la compilación de producción optimiza tu aplicación para mejorar el rendimiento y la velocidad.
+
+
+
+
+
+
+
+
 # React + TypeScript + Vite
 
 Esta plantilla proporciona una configuración mínima para que React funcione en Vite con HMR y algunas reglas de ESLint.
