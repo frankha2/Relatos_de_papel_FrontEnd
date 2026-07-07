@@ -10,8 +10,8 @@ Ademas de realizar todo el CRUD de los libros que existen en stock.
 ## Requisitos 📋
 
 Proyecto hecho con 
-[React](https://github.com/angular/angular-cli) version.
-[TypeScript](https://github.com/angular/angular-cli) version.
+[React](https://react.dev/learn/installation) version.
+[TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) version.
 [Vite](https://github.com/angular/angular-cli) version.
 [NodeJS](https://github.com/angular/angular-cli) version v22.15.0.
 
